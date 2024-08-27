@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Adding</title>
+    <style>
+        .box {
+          width: 200px;
+          height: 300px;
+          background-color: cornflowerblue;
+          border: 1px solid red;
+        }
+  
+        .box2 {
+          width: 300px;
+        }
+    </style>
+    <script src="jquery.js" type="text/JavaScript"></script>
+    <script>
+        $(document).ready(function() {
+            // Add class to div
+            $("#btnok").click(function(){
+                $("#mydiv").addClass("box2");
+                return false;
+            });
+
+            // Remove class from div
+            $("#btnrmv").click(function(){
+                $("#mydiv").removeClass("box");
+                return false;
+            });
+
+            // Set CSS property dynamically
+            $("#btncss").click(function(){
+                $("#mydiv").css({"background-color": "blue"});
+                return false;
+            });
+            // get html from element
+            $("#btnhtml").click(function(){
+                alert($("#mydiv").html());
+                return false;
+            });
+
+            //get text from element
+            $("#btntext").click(function(){
+                alert($("#mydiv").text());
+                return false;
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Add Element/Class after creation</h1>
+
+    <input id="btnok" value="Add HTML" type="submit">
+    <input id="btnrmv" value="Remove HTML" type="submit">
+    <input id="btncss" value="Add CSS" type="submit">
+    <input id="btnhtml" value="take html" type="submit">
+    <input id="btntext" value="Extract Text" type="submit">
+
+
+
+    <div class="box" id="mydiv">
+        <p>hello world</p>
+        <span>testing</span>
+
+
+    </div>
+
+</body>
+</html>

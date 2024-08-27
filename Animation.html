@@ -6,34 +6,38 @@
     <title>Animation</title>
     <script src="jquery.js"></script>
     <script>
-      var s = $("#btnSHOW");
-      var h = $("#btnHide");
-      var u = $("#btnUp");
-      var d = $("#btnDown");
+      $(document).ready(function() {
+        var s = $("#btnSHOW");
+        var h = $("#btnHide");
+        var u = $("#btnUp");
+        var d = $("#btnDown");
+        var t = $("#btnToggle");
 
-      s.click(function(){
-        $("#mmydiv").show();
+        s.click(function(){
+          $("#mydiv").show();
+          return false;
+        });
 
-        return false;
-      })
+        h.click(function(){
+          $("#mydiv").hide();
+          return false;
+        });
 
-      h.click(function(){
-        $("#mmydiv").hide();
+        u.click(function(){
+          $("#mydiv").slideUp();
+          return false;
+        });
 
-        return false;
-      }) 
-      
-     u.click(function(){
-        $("#mmydiv").slideDown();
+        d.click(function(){
+          $("#mydiv").slideDown();
+          return false;
+        });
 
-        return false;
-      })
-
-      $("btnShow").click(function(){
-        $("#mmydiv").slideUp();
-
-        return false;
-      })
+        t.click(function(){
+          $("#mydiv").slideToggle();
+          return false;
+        });
+      });
     </script>
     <style>
       .box {
@@ -49,13 +53,14 @@
     </style>
   </head>
   <body>
-    <h1>Animation in Jquery</h1>
+    <h1>Animation in jQuery</h1>
 
     <input type="submit" id="btnSHOW" value="Show" />
     <input type="submit" id="btnHide" value="Hide" />
     <input type="submit" id="btnUp" value="SlideUp" />
     <input type="submit" id="btnDown" value="SlideDown" />
+    <input type="submit" id="btnToggle" value="SlideToggle" />
 
-    <div class="box" id=" mydiv"></div>
+    <div class="box" id="mydiv"></div>
   </body>
 </html>
