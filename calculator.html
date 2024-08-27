@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+    <script src="jquery.js" type="Text/Javascript"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                
+               var a= $("#input1").val();
+                var b =$("#input2").val();
+                var result = parseInt(a)+parseInt(b);
+
+                $("#result").val(result)
+                return false;
+            })
+        });
+    </script>
+</head>
+<body >
+    <h1>Simple Calculator in Jquery</h1>
+
+    First:<input type="text" id="input1" >
+    Second:<input type="text" id="input2" >
+
+    <input id="btn1" value="Add" type="submit">
+    Result:<input type="text" id="result" >
+
+
+    
+</body>
+</html>

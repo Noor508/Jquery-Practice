@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <script src="jquery.js"></script>
+    <script>
+      var s = $("#btnSHOW");
+      var h = $("#btnHide");
+      var u = $("#btnUp");
+      var d = $("#btnDown");
+
+      s.click(function(){
+        $("#mmydiv").show();
+
+        return false;
+      })
+
+      h.click(function(){
+        $("#mmydiv").hide();
+
+        return false;
+      }) 
+      
+     u.click(function(){
+        $("#mmydiv").slideDown();
+
+        return false;
+      })
+
+      $("btnShow").click(function(){
+        $("#mmydiv").slideUp();
+
+        return false;
+      })
+    </script>
+    <style>
+      .box {
+        width: 200px;
+        height: 300px;
+        background-color: grey;
+        border: 1px solid red;
+      }
+
+      .box2 {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Animation in Jquery</h1>
+
+    <input type="submit" id="btnSHOW" value="Show" />
+    <input type="submit" id="btnHide" value="Hide" />
+    <input type="submit" id="btnUp" value="SlideUp" />
+    <input type="submit" id="btnDown" value="SlideDown" />
+
+    <div class="box" id=" mydiv"></div>
+  </body>
+</html>
