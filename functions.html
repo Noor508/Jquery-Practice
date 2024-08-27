@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important functions</title>
+
+    <script src="jquery.js" type="Text/Javascript"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            //link remove from dom
+            $(".lnk").click(function(){
+                $(this).remove();
+            })
+
+            //remove t class input
+            $(".lnk1").click(function(){
+                $(".t").remove();
+            })
+
+            //remove div whole
+            $(".Divdel").click(function(){
+                $(".box").remove();
+            })
+
+            
+            
+        })
+    </script>
+</head>
+<body>
+    <div class="box"> 
+        <span>Testig </span>
+        <a href="#" class="lnk"  >remove me</a>
+        <input type="text" class="t">
+        <a href="#" class="lnk1"  > remove above input</a>
+        <input type="submit" value="delete div" class="Divdel">
+    </div>
+
+
+    <div class="box"> 
+        <span>Testig </span>
+        <a href="#" class="lnk"  >  remove me part2</a>
+        <input type="text" class="t">
+        <a href="#" class="lnk1"  >  remove above input part2</a>
+        <input type="submit" value="delete div" class="Divdel">
+    </div>
+</body>
+</html>
