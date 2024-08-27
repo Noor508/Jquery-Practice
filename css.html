@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css selector</title>
+
+    <script src="jquery.js"></script>
+    <script>
+        // $(document).ready(ReadyMain)
+
+        // function ReadyMain(){
+        //     //Tag-based selector
+        //     $("p").css("border",'1px solid red');
+        // }
+    </script>
+</head>
+<body>
+    <h1>
+        Css selector
+    </h1>
+    <p>
+        Hello world
+    </p>
+    <ol>
+        <li>
+            <b>Tag based Selector</b>: $("TAG_Name")
+        </li>
+        <li>
+            <b>Id-based selector:</b> $("#id")
+        </li>
+        <li>
+            <b>class-based selector:</b> $(".className")
+        </li>
+        <li>
+            <b>Mixed:</b> $("p#para") 
+            paragraph tag having id= para
+        </li>
+        <li>
+            <b>class and tag based:</b> $("div.dummy") div having class dummy
+        </li>
+        <li>
+            space means inside <br>
+           <b>(tag.className paragraph):</b> $(div.dummy p) : div with dummy class and all p tags in it.
+        </li>
+        <li>
+            <b>comma separator:</b> it means or $(tag1 ,tag2)
+        </li>
+    </ol>
+
+</body>
+
+
+</html>
