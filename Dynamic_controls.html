@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="jquery.js" type="text/Javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnCreate").click(function(){
+               var $txt =  $("<input>").attr("type","text" , "class" ,"create")
+               $(".container").append(txt);
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>
+        Element creation dynamically
+    </h1>
+    <input type="button" id="btnCreate" value="Create">
+    <div class="container">
+
+    </div>
+</body>
+</html>
