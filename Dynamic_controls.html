@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="jquery.js" type="text/Javascript"></script>
+    <script src="jquery.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
+            // Add textbox dynamically
             $("#btnCreate").click(function(){
-               var $txt =  $("<input>").attr("type","text" , "class" ,"create")
-               $(".container").append(txt);
-            })
-        })
+               var $txt =  $("<input>").attr("type","text").attr("class" ,"create");
+               $(".container").append($txt);
+            });
+
+            // Add dropdown dynamically
+            $("#btnDrop").click(function(){
+                var cmb = $("<select>");
+                var opt1 = $("<option>").attr("value", "1").text("Pakistan");
+                var opt2 = $("<option>").attr("value", "2").text("India");
+
+                // Append options to the select element
+                cmb.append(opt1);
+                cmb.append(opt2);
+
+                // Append the select element to the container
+                $(".container").append(cmb);
+            });
+        });
     </script>
 </head>
 <body>
     <h1>
         Element creation dynamically
     </h1>
-    <input type="button" id="btnCreate" value="Create">
+    <input type="button" id="btnCreate" value="Create Text Box">
+    <input type="button" id="btnDrop" value="Create Dropdown">
+
     <div class="container">
 
     </div>

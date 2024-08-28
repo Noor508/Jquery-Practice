@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country City Example</title>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script>
+      var countries = []; // Corrected array initialization
+
+      countries.push({ CountryID: 1, Name: "Pakistan" });
+      countries.push({ CountryID: 2, Name: "India" }); // Changed to CountryID 2
+      countries.push({ CountryID: 3, Name: "China" }); // Changed to CountryID 3
+
+      var cities = [];
+
+      cities.push({ cityID: 1, CountryID: 1, Name: "Lahore" });
+      cities.push({ cityID: 2, CountryID: 1, Name: "Karachi" });
+      cities.push({ cityID: 3, CountryID: 1, Name: "Isb" });
+      cities.push({ cityID: 4, CountryID: 2, Name: "Delhi" }); // Fixed spelling of "Delhi"
+      cities.push({ cityID: 5, CountryID: 2, Name: "Bombay" });
+      cities.push({ cityID: 6, CountryID: 3, Name: "Shanghai" });
+      cities.push({ cityID: 7, CountryID: 3, Name: "Beijing" });
+
+      $(document).ready(function () {
+        var cmb = $("#country");
+        var cmb1 = $("#country");
+
+        var opt = $("<option>");
+        opt.attr("value", "0");
+        opt.text("--Select--");
+        cmb1.append(opt);
+
+        for (var i = 0; i < countries.length; i++) {
+          var opt = $("<option>");
+          opt.attr("value", countries[i].CountryID);
+          opt.text(countries[i].Name);
+
+          cmb.append(opt); // Corrected to append to #country
+        }
+
+        // Add an event listener to update the city dropdown when a country is selected
+        cmb1.change(function () {
+          var countryID = $(this).val();
+          var cityDropdown = $("#city");
+          cityDropdown.empty(); // Clear previous options
+
+          for (var i = 0; i < cities.length; i++) {
+            if (cities[i].CountryID == countryID) {
+              var cityOption = $("<option>");
+              cityOption.attr("value", cities[i].cityID);
+              cityOption.text(cities[i].Name);
+
+              cityDropdown.append(cityOption);
+            }
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Country:
+    <select id="country"></select>
+    <br />
+    City:
+    <select id="city"></select>
+  </body>
+</html>
