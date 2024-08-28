@@ -9,41 +9,42 @@
       var countries = []; // Corrected array initialization
 
       countries.push({ CountryID: 1, Name: "Pakistan" });
-      countries.push({ CountryID: 2, Name: "India" }); // Changed to CountryID 2
-      countries.push({ CountryID: 3, Name: "China" }); // Changed to CountryID 3
+      countries.push({ CountryID: 2, Name: "India" });
+      countries.push({ CountryID: 3, Name: "China" });
 
       var cities = [];
 
       cities.push({ cityID: 1, CountryID: 1, Name: "Lahore" });
       cities.push({ cityID: 2, CountryID: 1, Name: "Karachi" });
       cities.push({ cityID: 3, CountryID: 1, Name: "Isb" });
-      cities.push({ cityID: 4, CountryID: 2, Name: "Delhi" }); // Fixed spelling of "Delhi"
+      cities.push({ cityID: 4, CountryID: 2, Name: "Delhi" });
       cities.push({ cityID: 5, CountryID: 2, Name: "Bombay" });
       cities.push({ cityID: 6, CountryID: 3, Name: "Shanghai" });
       cities.push({ cityID: 7, CountryID: 3, Name: "Beijing" });
 
       $(document).ready(function () {
-        var cmb = $("#country");
-        var cmb1 = $("#country");
+        var countryDropdown = $("#country");
 
-        var opt = $("<option>");
-        opt.attr("value", "0");
-        opt.text("--Select--");
-        cmb1.append(opt);
+        // Add default option
+        var defaultOption = $("<option>");
+        defaultOption.attr("value", "0");
+        defaultOption.text("--Select--");
+        countryDropdown.append(defaultOption);
 
+        // Populate country dropdown
         for (var i = 0; i < countries.length; i++) {
-          var opt = $("<option>");
-          opt.attr("value", countries[i].CountryID);
-          opt.text(countries[i].Name);
+          var countryOption = $("<option>");
+          countryOption.attr("value", countries[i].CountryID);
+          countryOption.text(countries[i].Name);
 
-          cmb.append(opt); // Corrected to append to #country
+          countryDropdown.append(countryOption);
         }
 
-        // Add an event listener to update the city dropdown when a country is selected
-        cmb1.change(function () {
+        // Add event listener to update the city dropdown when a country is selected
+        countryDropdown.change(function () {
           var countryID = $(this).val();
           var cityDropdown = $("#city");
-          cityDropdown.empty(); // Clear previous options
+          cityDropdown.find("option:not(:first)").remove(); // Clear previous options
 
           for (var i = 0; i < cities.length; i++) {
             if (cities[i].CountryID == countryID) {
@@ -59,10 +60,12 @@
     </script>
   </head>
   <body>
-    Country:
+    <label for="country">Country:</label>
     <select id="country"></select>
     <br />
-    City:
-    <select id="city"></select>
+    <label for="city">City:</label>
+    <select id="city">
+      <option value="0">--Select--</option>
+    </select>
   </body>
 </html>
