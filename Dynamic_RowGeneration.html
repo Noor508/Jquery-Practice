@@ -1,76 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="jquery.js" type="text/javascript"></script>
-    <script>
-      $(function () {
-        // Trigger on Add Subject button click
-        $("#btnAdd").click(function () {
-          var $table = $("#tblSubjects"); // Reference to the table
-          var $tr = $("<tr>"); // Create a new table row
+<html>
+<head >
+    <title>Subjects Practices</title>
+     <script src="jquery.js" type="text/javascript"></script>
+    	
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(MainFunction);
+    
+    function MainFunction()     {
 
-          // Subject text input
-          var $td = $("<td>").text("Subject:");
-          $tr.append($td);
+		alert('ready');
 
-          $td = $("<td>");
-          var $textbox = $("<input>")
-            .attr("type", "text")
-            .attr("id", "txtSubject");
-          $td.append($textbox);
-          $tr.append($td);
+        $("#btnAdd").click(function (obj, event) {
 
-          // Marks text input
-          $td = $("<td>").text("Marks:");
-          $tr.append($td);
+            var $table = $("#tblSubjects");
 
-          $td = $("<td>");
-          $textbox = $("<input>")
-            .attr("type", "text")
-            .attr("id", "txtMarks");
-          $td.append($textbox);
-          $tr.append($td);
+            var $tr = $("<tr>");
 
-          // Delete button
-          $td = $("<td>");
-          var $button = $("<button>").text("X").click(function () {
-            $(this).closest("tr").remove();
-          });
-          $td.append($button);
-          $tr.append($td);
+            if ($("#tblSubjects tr").length < 5) {
+                var $td = $("<td>").text("Subject");
+                $tr.append($td);
 
-          // Append the row to the table
-          $table.append($tr);
+                $td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtSubject").attr("type","text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                $td = $("<td>").text("Marks");
+                $tr.append($td);
+
+                $td = $("<td>");
+                $textbox = $("<input>").attr("id", "txtMarks").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                $td = $("<td>");
+                var $button = $("<button>");
+                $button.text("X");
+                $td.append($button);
+                $tr.append($td);
+
+                $table.append($tr);
+
+                $button.bind("click", function (obj, e) {
+
+                    var $isConfirm = confirm("Record will be deleted. Click Ok to continue and Cancel to Ignore");
+                    if ($isConfirm == true) {
+                        $(this).closest("tr").remove();
+                    }
+                    else
+                        return false;
+
+                });
+            }
+            else {
+                alert("you have already added 5 rows");
+                return false;
+            }
+        }); //End of btnAdd click event handler
+		
+		//Save Button Code
+        $("#btnSave").click(function () {
+
+            var isValid = true;
+
+            //Check if added rows are less than 3
+            if ($("#tblSubjects tr").length < 3) {
+
+                alert("Atleast three subjects should be added");
+                isValid = false;
+                return false;
+            }
+
+            //Extract data and create a list of objects			
+            var SubjectsList = [];
+
+            $("#tblSubjects tr").each(function () {
+
+                var itemObject = {
+                    SubjectName: $(this).find("#txtSubject").val(),
+                    Marks: $(this).find("#txtMarks").val()
+                };
+
+                SubjectsList.push(itemObject);
+            });
+
+            ///Now here we can do some processing but we are going to show data in a table below
+
+            var $div = $("#outputTable");
+            $div.empty();
+
+            $table = $("<table>");
+            $table.append("<tr><td> Subject </td><td> Marks</td> <td> Status </td></tr>");
+            $div.append($table);
+
+            for (var i = 0; i < SubjectsList.length; ++i) {
+                var subj = SubjectsList[i];
+                var status = 'Fail';
+                if (subj.Marks >= 50)
+                    status = 'Pass';
+
+                $table.append("<tr><td> " + subj.SubjectName + " </td><td> " + subj.Marks + "</td> <td>" + status + " </td></tr>");
+            }
         });
-      });
-    </script>
-  </head>
-  <body>
-    <div>
-      <table>
-        <tr>
-          <td>
-            <input id="btnAdd" type="button" value="Add Subject" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <table id="tblSubjects" border="1">
-              <!-- Subject rows will be added here -->
-            </table>
-          </td>
-        </tr>
+		
+       }//End of MainFunction
+	
+	</script>
+	
+<div>
+    
+    <table>
+    
+    <tr>
+    <td>
+		<input id="btnAdd" type="button" value="Add Subject" />
+    </td>
+    
+    </tr>
+    <tr>
+    <td>
+    <table id="tblSubjects">
+   
+    </table>
+    </td>
+    </tr>
+    <tr>
+    <td>
+		<input type="button" id="btnSave" value="Save" />
+    </td>
+    </tr>
+    
+    </table>
 
-        <tr>
-          <td>
-            <input type="button" id="btnSave" value="Save" />
-          </td>
-        </tr>
-      </table>
     </div>
-    <div id="container"></div>
-  </body>
+
+    <div id ="outputTable">
+
+    
+    </div>
+</body>
 </html>
